@@ -1,6 +1,6 @@
 services:
   n8n:
-    image: docker.n8n.io/n8nio/n8n
+    image: ghcr.io/deluxebear/n8n:chs
     container_name: n8n
     restart: unless-stopped
     ports:
@@ -9,6 +9,9 @@ services:
       - data:/home/node/.n8n
       - data_venv:/data # 虚拟环境将保存在这里
     environment:
+      - N8N_DEFAULT_LOCALE=zh-CN
+      - N8N_ENTERPRISE_MOCK=true
+      - NODE_ENV=development
       - NODE_FUNCTION_ALLOW_BUILTIN=*
       - NODE_FUNCTION_ALLOW_EXTERNAL=*
       - GENERIC_TIMEZONE=Asia/Shanghai
